@@ -52,6 +52,8 @@ volumes:
     driver: ${VOLUMES_DRIVER}
   react:
     driver: ${VOLUMES_DRIVER}
+  typesense:
+    driver: ${VOLUMES_DRIVER}
 
 services:
 
