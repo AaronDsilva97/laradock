@@ -52,8 +52,6 @@ volumes:
     driver: ${VOLUMES_DRIVER}
   react:
     driver: ${VOLUMES_DRIVER}
-  typesense:
-    driver: ${VOLUMES_DRIVER}
 
 services:
 
@@ -2183,6 +2181,8 @@ services:
             TYPESENSE_DATA_DIR: '${TYPESENSE_DATA_DIR:-/typesense-data}'
             TYPESENSE_API_KEY: '${TYPESENSE_API_KEY:-xyz}'
             TYPESENSE_ENABLE_CORS: '${TYPESENSE_ENABLE_CORS:-true}'
+        volumes:
+            - 'sail-typesense:/typesense-data'
         networks:
             - backend
         
