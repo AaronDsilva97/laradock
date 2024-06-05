@@ -1167,8 +1167,8 @@ services:
         - ./certbot/letsencrypt/:/var/www/letsencrypt
         - web-root:/var/www/html
       environment:
-        - CN="orzuv-dev.riskhub.ltd"
-        - EMAIL="aaronxdsilva@gmail.com"
+        - CN=orzuv-dev.riskhub.ltd
+        - EMAIL=aaronxdsilva@gmail.com
         - web-root:/var/www/html
       depends_on:
         - nginx
