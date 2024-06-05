@@ -55,6 +55,13 @@ volumes:
   typesense:
     driver: ${VOLUMES_DRIVER}
 
+  web-root:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/ec2-user/orzuv_backend/public
+      o: bind
+
 services:
 
 ### Workspace Utilities ##################################
@@ -1158,11 +1165,16 @@ services:
       volumes:
         - ./data/certbot/certs/:/var/certs
         - ./certbot/letsencrypt/:/var/www/letsencrypt
+        - web-root:/var/www/html
       environment:
         - CN="orzuv-dev.riskhub.ltd"
         - EMAIL="aaronxdsilva@gmail.com"
+        - web-root:/var/www/html
+      depends_on:
+        - nginx
       networks:
         - frontend
+      command: certonly --webroot --webroot-path=/var/www/html --email aaronxdsilva@gmail.com --agree-tos --no-eff-email --staging -d orzuv-dev.riskhub.ltd
 
 ### MailCatcher ################################################
     mailcatcher:
